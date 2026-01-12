@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&display=swap');
+
+:root {
+    font-size: 18px;
+    color: rgb(7, 67, 72);
+    /* font-weight: bold; жирный курсив*/
+    /* font-style: italic; курсив */
+    /* https://fonts.google.com/ это выбор шрифта */
+    font-family: "Noto Sans Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-variation-settings: "wdth" 100; 
+}
+
+body {
+    line-height: normal;
+}
+
+h1 {
+    font-size: 2rem;
+    padding: 0.2rem 0; 
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: rgb(10, 80, 85);
+    font-style: italic;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
+.name-title {
+    color: rgb(12, 100, 120);
+    font-weight: bold;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.aligned-center {
+    text-align: center;
+}
