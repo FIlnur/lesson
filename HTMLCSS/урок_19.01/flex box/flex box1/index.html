@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .main {
+            min-height: 100vh;
+            text-align: center;
+        }
+        .flex-container {
+            display: flex;
+            height: 100vh;
+
+        }
+        .flex-item {
+            width: 150px;
+            background: lightblue;
+        }
+        .color {
+            background: gray;
+        }
+        .medium {
+            flex-grow: 1;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <main class="main">
+        <section class="flex-container">
+            <div class="flex-item color">Серый</div>
+            <div class="medium">Белый</div>
+            <div class="flex-item">Светло-синий</div>
+        </section>
+    </main>
+</body>
+</html>
