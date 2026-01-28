@@ -24,6 +24,10 @@
     flex-grow: 0;
 }
 
+.main {
+    max-width: 920px;
+}
+
 .menu-nav{
     
     flex-grow: 1;
@@ -33,7 +37,7 @@
     display: flex;
     list-style-type: none;
     flex-wrap: wrap;
-    gap: 1;
+    gap: 8px;
 }
 
 @media screen and (max-width: 425px) {
@@ -50,22 +54,66 @@
 }
 
 .heading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+     margin: 0 auto;   
 }
 .heading__text{
-
+    text-align: left;
+    padding: 10px;
 }
 
 .heading__nav {
     display: flex;
     justify-content: center;
-
 }
 
 .heading__nav-links {
     display: flex;
     list-style-type: none;
     flex-grow: 1;
+    gap: 8px;
+    justify-content: center;
+}
+
+.places {
+    padding: 10px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.places > div {
+    flex-basis: 30%;
+    flex-shrink: 0;
+    flex-grow: 1;
+
+}
+
+.assortment {
+    padding: 10px;
+}
+
+.big-bouquets {
+    display: flex;         
+    list-style: none;      
+    padding: 0;
+    gap: 20px;             
+    justify-content: center; 
+}
+
+.bouquet-item img {
+    width: 100%;           
+    height: auto;
+    display: block;
+}
+
+.bouquet-sicez {
+    box-sizing: border-box;
+    display: flex;
+    list-style-type: none;
+    flex-wrap: wrap;
+    gap: 8px;
+    text-align: center;
 }
