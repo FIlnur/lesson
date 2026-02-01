@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивная страница</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 20px;
+            padding: 0 15px;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto 20px;
+        }
+
+        button {
+            display: block;
+            padding: 12px 24px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Стили для мобильных устройств (до 768px) */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+                padding: 0 10px;
+            }
+
+            button {
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            img {
+                max-width: 90%;
+            }
+        }
+
+        /* Стили для планшетов (от 768px до 1024px) */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            p {
+                font-size: 1.1rem;
+                text-align: left;
+            }
+
+            button {
+                width: 200px;
+                height: auto;
+                margin: 0 auto 20px;
+            }
+
+            img {
+                max-width: 80%;
+            }
+        }
+
+        /* Стили для десктопов (более 1024px) */
+        @media (min-width: 1024px) {
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            h1, p, button {
+                text-align: center;
+                width: 80%;
+                max-width: 600px;
+            }
+
+            img {
+                max-width: 60%;
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Добро пожаловать на адаптивную страницу!</h1>
+        <p>
+            Это пример адаптивной веб‑страницы, которая корректно отображается на разных устройствах: 
+            мобильных телефонах, планшетах и десктопах. При изменении ширины экрана элементы
+            автоматически подстраиваются под текущее разрешение.
+        </p>
+        <img src="https://via.placeholder.com/800x400" alt="Пример изображения">
+        <button>Нажать меня</button>
+    </div>
+</body>
+</html>
