@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strice";    
+        // Запросите у пользователя число, возведите это число во
+        // 2-ю степень и выведите на экран.
+        // if (number !== null && !isNaN(number)) {
+        //     const result = Number(number) ** 2;
+        //     alert(`Квадрат числа: ${result}`);
+        // } else {
+        //     alert('Вы ввели не число или отменили ввод!');
+        // }
+
+        // Запросите у пользователя 2 числа и выведите среднее 
+        // арифметическое этих чиселconst number = prompt
+        // ('Введите число:'); 
+        // const num1 = prompt('Введите первое число:');
+        // const num2 = prompt('Введите второе число:');
+        // if (num1 !== null && num2 !== null && !isNaN(num1) && !isNaN(num2)) {
+          
+        //     const average = (Number(num1) + Number(num2)) / 2;
+            
+        //     alert(`Среднее арифметическое: ${average}`);
+        // } else {
+        //     alert('Вы ввели некорректные данные!');
+        // }
+        // Запросите у пользователя длину стороны квадрата и
+        // выведите площадь такого квадрата
+
+        // const num1 = prompt('Введите первую сторону квадрата:');
+        // const num2 = prompt('Введите вторую сторону квадрата:');
+        // if (num1 !== null && num2 !== null && !isNaN(num1) && !isNaN(num2)) {
+          
+        //     const average = (Number(num1) * Number(num2));
+            
+        //     alert(`Площадь квадрата: ${average}`);
+        // } else {
+        //     alert('Вы ввели некорректные данные!');
+        // }
+
+        // Реализуйте конвертор из километров в мили (пользователь
+        // вводит километры, программа выводит мили). 1 км=0,621371
+        // миль. Это значение укажите в коде как константу.
+        // const a = +prompt('Введите километры:');
+        // const miles = 0.621371;
+            
+        // alert(a * miles);
+        
+        // const number1 = +prompt("Введите число 1:");
+        // const number2 = +prompt("Введите число 2:");
+        // alert(`${number1 + number2}\n${number1 - number2}\n${number1 * number2}\n${number1 / number2}`);
+        
+        // Пользователь вводит значения a и b для формулы a*x+b=0
+        // а программа считает и выводит значение x.
+        // alert("a*x+b=0");
+        // const a = +prompt("a:");
+        // const b = +prompt("b:");
+        // const x = -b / a;
+        // alert(x);
+      
+
+const number1 = +prompt("Введите первое число: ")
+const number2 = +prompt("Введите второе число: ")
+ 
+const operation = +prompt("Выберите операцию:\n1. +\n2. -\n3. *\n4. /");
+let operationResult = "Неверный выбор";
+switch (operation) {
+    case 1: operationResult = number1 + number2; break;
+    case 2: operationResult = number1 - number2; break;
+    case 3: operationResult = number1 * number2; break;
+    case 4: operationResult = number1 / number2; break;
+}
+alert(operationResult);
+
+        // const hours = +prompt("часы:");
+        // const minutes = +prompt("минут:");
+        // alert(`осталось часов: ${23 - hours + Math.floor((60 - minutes) / 60)}\nосталось минут: ${(60 - minutes) % 60}`);
+    </script>
+</body>
+</html>
