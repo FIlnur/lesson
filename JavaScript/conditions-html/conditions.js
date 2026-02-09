@@ -41,7 +41,7 @@
 // 4. Запросить у пользователя время (часы, минуты,
 // секунды) и проверить корректность введенных данных.
 
-const [hours, minuts, seconds] 
+// const [hours, minuts, seconds] 
 
 // проверка на возраст
 // const age = prompt("What is your age?");
