@@ -46,21 +46,136 @@
         //Запросить число и проверить, простое ли оно. Простое
         //число делится без остатка только на себя и на еденицу.
         
-        const number = +prompt("Введите число: ");
-        let isPrime = true;
-        for (let i = 2; i < Math.sqrt(number/2); i++) {
-        if (number%i === 0) {
-            isPrime = false;
-            break;
-        }
+        // const number = +prompt("Введите число: ");
+        // let isPrime = true;
+        // for (let i = 2; i < Math.sqrt(number/2); i++) {
+        // if (number%i === 0) {
+        //     isPrime = false;
+        //     break;
+        // }
+        // }
+
+        // if (isPrime) {
+        // console.log(`Число ${number} простое`);
+        // } else {
+        // console.log("Число не простое");
+        // }
+        
+        // написать функцию, которая выводит все четные или нечетные числа, в указанном пользователем диапазоне.
+        // Какие числа выводить, определяется третьим параметром типа bool(true- четные, false- нечетные)
+
+        // function printByOddity (start, end, toPrintEvens) {
+        
+        //     for( let number = start; number < end; number++) {
+        //         const isEvenNumber = number % 2 == 0;
+        //         if (toPrintEvens == isEvenNumber) {
+        //             console.log(number);
+        //         }
+        //     }
+        // }
+
+        // Вывести все максимальные числа среди заданных пользователем
+        // function max(a, b, c, d, e) {
+        //     let currentMax = a;
+        //     if (b > currentMax) {
+        //         currentMax = b;
+        //     }
+        //     if (c > currentMax) {
+        //         currentMax = c;
+        //     }
+        //     if (d > currentMax) {
+        //         currentMax = d;
+        //     }
+        //     if (e > currentMax) {
+        //         currentMax = e;
+        //     }
+        //     return currentMax;
+        // }
+        // Второй способ
+        // function max(...numbers) {
+        //     let currentMax = numbers[0];
+        //     for (let i = 0; i < numbers.length; i++) {
+        //         if (numbers[i] > currentMax) {
+        //             currentMax = numbers[i];
+        //         }
+        //     }
+        //     return currentMax;
+        // }
+        // console.log(max(1))
+        // console.log(max(2, 1))
+        // console.log(max(2, 1, 3))
+        // console.log(max(2, 1, 3, 4))
+        // console.log(max(2, 5, 3, 4, 1))
+
+        // Написать функцию, которая принимает дату и возвращает дату
+        // следующего дня в виде строки "дд.мм.гггг".
+        // Проверку на високосный год желательно написать отдельной функцией.
+
+        function isLeap(year) {
+            if (year % 400 == 0 || year % 4 == 0 && year %100 != 0);
+            return 
         }
 
-        if (isPrime) {
-        console.log(`Число ${number} простое`);
-        } else {
-        console.log("Число не простое");
+        function FormatDate(day, month, year) {
+            const dayFormatted = String(day).padStart(2, '0');
+            const monthFormatted = String(month).padStart(2, '0');
+            const yearFormatted = String(year).padStart(4, '0');
+            return `${dayFormatted}.${monthFormatted}.${yearFormatted}`;
         }
-        
+        function getDaysCount(month, year) {
+            // TODO Include leap year logic
+            switch (month) {
+                case 2:
+                    return isLeap(year) ? 29 :28;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    return 30;
+            }
+            return 31;
+        }
+        function getNextDayFormatted(day, month, year) {
+            const monthsPerYear = 12;
+            day ++;
+            if (day > getDaysCount(month)) {
+                day = 1;
+                manth++;
+            }
+            if (month > monthsPerYear) {
+                year++;
+                month = 1
+            }
+            
+        }
+         function testGetDaysCount() {
+            console.log(getDaysCount(1, 2000) == 31);
+            console.log(getDaysCount(2, 2000) == 28);
+            console.log(getDaysCount(3, 2000) == 31);
+            console.log(getDaysCount(4, 2000) == 30);
+            console.log(getDaysCount(5, 2000) == 31);
+            console.log(getDaysCount(6, 2000) == 30);
+            console.log(getDaysCount(7, 2000) == 31);
+            console.log(getDaysCount(8, 2000) == 31);
+            console.log(getDaysCount(9, 2000) == 30);
+            console.log(getDaysCount(10, 2000) == 31);
+            console.log(getDaysCount(11, 2000) == 30);
+            console.log(getDaysCount(12, 2000) == 31);
+            console.log();
+         }
+
+         function testNextDayFormatted(){
+            console.log(getNextDayFormatted(06, 6, 2000) == "07.06.2000");
+            console.log(getNextDayFormatted(30, 6, 2000) == "01.07.2000");
+            console.log(getNextDayFormatted(31, 5, 2000) == "01.06.2000");
+            console.log(getNextDayFormatted(29, 2, 2000) == "01.03.2000");
+            console.log(getNextDayFormatted(28, 2, 2000) == "29.02.2000");
+            console.log(getNextDayFormatted(28, 2, 2001) == "01.03.2001");
+            console.log(getNextDayFormatted(31, 12, 2000) == "01.01.2001");
+         }
+         testGetDaysCount();
+         testNextDayFormatted();
+
     </script>
     
 </body>
