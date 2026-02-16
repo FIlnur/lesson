@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let a = 0;
+        //   while (a < 10) {
+            //     document.write(`${a} `);
+            //     a++;
+            //   }
+            //   while (gameIsRunning) {
+                //     if (player.isQuitting) {
+                    //       gameIsRunning = false;
+                    //     }
+                    //   }
+                    
+                    //   let arr = [1, 2, 7, 3, 4, 2];
+                    //   for (let i = 0; i < arr.length; i++) {
+                        //     document.write(`${arr[i]} `);
+                        //   }
+                        //вывести все числа от 1 до 100
+        // const number = +prompt("Введите число:");
+        
+        // for (let i = 0; i < 100; i++) {
+        //     if (i % number == 0) {
+        //         document.write('${i}');
+                
+        //     }
+        // }
+        
+        // Вывести каждый 4 элемент из указанного пользователем диапазона.
+        // Пользователь указывает минимальное и максимальное значение диапазона
+        // const rangeBegin = +prompt("Введите число - начало диапазона:");
+        // const rangeEnd = +prompt("ВВедите число - конец диапазона:");
+        // const stop = +prompt("Введите шаг:");
+
+        // for (let i = rangeBegin; i < rangeEnd; i=i+4) {
+        //     document.write(i+ '');
+        // }
+
+
+        //Запросить число и проверить, простое ли оно. Простое
+        //число делится без остатка только на себя и на еденицу.
+        
+        const number = +prompt("Введите число: ");
+        let isPrime = true;
+        for (let i = 2; i < Math.sqrt(number/2); i++) {
+        if (number%i === 0) {
+            isPrime = false;
+            break;
+        }
+        }
+
+        if (isPrime) {
+        console.log(`Число ${number} простое`);
+        } else {
+        console.log("Число не простое");
+        }
+        
+    </script>
+    
+</body>
+</html>

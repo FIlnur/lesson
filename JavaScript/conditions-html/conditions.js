@@ -50,3 +50,22 @@
 //     console.log("not");
 // else
 //     console.log("yes"); 
+
+// 5. Запросить координаты точки (x, y) и определить номер
+// четверти, в которую попала эта точка. Необходимо учесть
+// случаи попадания точки на оси X или Y или в начало
+// координат.
+
+// Реализовать калькулятор. Пользователь вводит 2 числа и
+// знак (+ - * /). В зависимости от введенного знака решить
+// пример и вывести результат.
+const number1 = +prompt("Введите первое число:");
+const number2 = +prompt("Введите второе число:");
+const operation = +prompt("Выберите операцию:\n1. +\n2. -\n3. *\n4. /");
+Let operationResult = "Неверный выбор";
+switch (operation {
+    case 1: operationResult = number1 + number2; break;
+    case 2: operationResult = number1 - number2; break;
+    case 3: operationResult = number1 * number2; break;
+    case 4: operationResult = number1 / number2; break;
+});
