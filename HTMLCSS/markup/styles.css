@@ -1,7 +1,8 @@
 * {
     padding: 0;
-    margin: 0;
+    margin: 0, auto;
     box-sizing: border-box;
+    font: inherit;
 }
 
 .header {
@@ -280,4 +281,18 @@
     .gallery-container {
         grid-template-columns: 1fr; /* 1 колонка на смартфонах */
     }
+}
+
+.footer-links {
+    margin-bottom: 15px;
+    font: 19px / 20px 'Roboto';
+    font-weight: 300;
+}
+
+.footer-links div {
+    border-bottom: 1px solid rgba(0, 109, 191, 0.2);
+    color: #0072bc;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color .3s, border-color .3s;
 }
