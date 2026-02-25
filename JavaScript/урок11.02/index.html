@@ -7,6 +7,7 @@
 </head>
 <body>
     <script>
+    "use strict";
         // let a = 0;
         //   while (a < 10) {
             //     document.write(`${a} `);
@@ -111,70 +112,105 @@
         // следующего дня в виде строки "дд.мм.гггг".
         // Проверку на високосный год желательно написать отдельной функцией.
 
-        function isLeap(year) {
-            if (year % 400 == 0 || year % 4 == 0 && year %100 != 0);
-            return 
-        }
+        
+const prompt = require('prompt-sync')();
 
-        function FormatDate(day, month, year) {
-            const dayFormatted = String(day).padStart(2, '0');
-            const monthFormatted = String(month).padStart(2, '0');
-            const yearFormatted = String(year).padStart(4, '0');
-            return `${dayFormatted}.${monthFormatted}.${yearFormatted}`;
-        }
-        function getDaysCount(month, year) {
-            // TODO Include leap year logic
-            switch (month) {
-                case 2:
-                    return isLeap(year) ? 29 :28;
-                case 4:
-                case 6:
-                case 9:
-                case 11:
-                    return 30;
-            }
-            return 31;
-        }
-        function getNextDayFormatted(day, month, year) {
-            const monthsPerYear = 12;
-            day ++;
-            if (day > getDaysCount(month)) {
-                day = 1;
-                manth++;
-            }
-            if (month > monthsPerYear) {
-                year++;
-                month = 1
-            }
-            
-        }
-         function testGetDaysCount() {
-            console.log(getDaysCount(1, 2000) == 31);
-            console.log(getDaysCount(2, 2000) == 28);
-            console.log(getDaysCount(3, 2000) == 31);
-            console.log(getDaysCount(4, 2000) == 30);
-            console.log(getDaysCount(5, 2000) == 31);
-            console.log(getDaysCount(6, 2000) == 30);
-            console.log(getDaysCount(7, 2000) == 31);
-            console.log(getDaysCount(8, 2000) == 31);
-            console.log(getDaysCount(9, 2000) == 30);
-            console.log(getDaysCount(10, 2000) == 31);
-            console.log(getDaysCount(11, 2000) == 30);
-            console.log(getDaysCount(12, 2000) == 31);
-            console.log();
-         }
+//Проверка на високосный год
+function isLeap (year) {
+    return (year%400 === 0 || (year%4 === 0 && year%100 !== 0));
+}
 
-         function testNextDayFormatted(){
-            console.log(getNextDayFormatted(06, 6, 2000) == "07.06.2000");
-            console.log(getNextDayFormatted(30, 6, 2000) == "01.07.2000");
-            console.log(getNextDayFormatted(31, 5, 2000) == "01.06.2000");
-            console.log(getNextDayFormatted(29, 2, 2000) == "01.03.2000");
-            console.log(getNextDayFormatted(28, 2, 2000) == "29.02.2000");
-            console.log(getNextDayFormatted(28, 2, 2001) == "01.03.2001");
-            console.log(getNextDayFormatted(31, 12, 2000) == "01.01.2001");
-         }
-         testGetDaysCount();
-         testNextDayFormatted();
+//Получение количества дней в месяце
+function getDaysCountInMonth(month, year) {
+    switch (month) {
+        case 2: return isLeap(year) ? 29 : 28;
+        case 4:
+        case 6:
+        case 9:
+        case 11: return 30;
+    }
+    return 31;
+}
+
+//Запрос ввода года
+function input_year() {
+    let year = +prompt("Введите год (не более 2026): ");
+    while (year < 1 || year > 2026 || year == isNaN(year)) {
+        console.log("Неверно указан год, повторите ввод");
+        year = +prompt("Введите год: ");
+    }
+    return year;    
+}
+
+//Запрос ввода месяца
+function input_month() {
+    let month = +prompt("Введите меясяц (от 1 до 12): ");
+    
+    while (month < 1 || month > 12 || month == isNaN(month) ) {
+        console.log("Неверно указан месяц, повторите ввод");
+        month = +prompt("Введите меясяц: ");
+    }
+
+    return month;
+}
+
+//Запрос ввода дня с проверкой на високосный год
+function input_day(month, year) {
+    let day = +prompt("Введите день: ");
+    while (day < 1 || day > getDaysCountInMonth(month, year) || day == isNaN(day)) {
+
+        console.log(`Неверно указан день, повторите ввод, в месяце ${getDaysCountInMonth(month, year)}`);
+        day = +prompt("Введите день: ");
+    }
+    return day;    
+}
+
+//Подсчитывание количества дней от 01.01.0000
+function getDaysCountToDate(day, month, year) {
+    let temp = 0;
+    for (let i = 0; i < year; i++) {
+        if (isLeap(i)) {
+            temp += 366;
+        } else {
+            temp += 365;
+        }
+    }
+
+    for (let j = 1; j <= month; j++) {
+        if (j == 4 || j == 6 || j == 9 || j == 11) {
+            temp += 30;
+        } else if (j == 2) {
+            temp += 28;
+        } else {
+            temp += 31;
+        }
+    }
+
+    // if (isLeap(year)) {
+    //     temp++;
+    // }
+    temp += day;
+    return temp;
+}
+
+//Ввод данных
+const year1 = input_year();
+const month1 = input_month()
+const day1 = input_day(month1, year1);
+
+const year2 = input_year();
+const month2 = input_month()
+const day2 = input_day(month2, year2);
+
+//Разница дней между датами
+function difference_between_dates(day1, month1, year1, day2, month2, year2) {
+    let DaysCountFirstDate =  getDaysCountToDate(day1, month1,year1);
+    let DaysCountSecondDate = getDaysCountToDate(day2, month2,year2);
+
+    return DaysCountSecondDate - DaysCountFirstDate;
+}
+
+console.log(difference_between_dates(day1, month1, year1, day2, month2, year2));
 
     </script>
     
