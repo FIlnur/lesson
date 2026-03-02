@@ -52,3 +52,15 @@ function invert(value) {
     return !value;
 }
 console.log(invert(true));
+
+// 8. Напиши функцию, которая принимает число и через условие возвращает истину, если оно больше нуля, и ложь в противном случае.
+
+function isPositive(number) {
+    if (number > 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+console.log(isPositive(-1))
