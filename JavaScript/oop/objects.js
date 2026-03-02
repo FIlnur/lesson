@@ -38,7 +38,7 @@ function newTask(title, description) {
     task.description = description;
 
     return task;
-};
+}
 
 
 function Task(title, description) {
@@ -50,11 +50,11 @@ function Task(title, description) {
     this.description = description;
 
     // return task;
-};
-
+}
 Object.setPrototypeOf(Task.prototype, taskProto);
 
-const task2 = new Task("Go out", "To walk away");
+const task2 = {};
+task2.__proto__ = taskProto;
 
 task2.log()
 task2.complete();
