@@ -1,0 +1,37 @@
+<!-- Начиная со страницы с единственным div элементом
+ с классом container, создайте простую визуальную модель светофора,
+ которая должна содержать:
+ 1) Черный вертикальный блок
+ 2) 3 круглых элемента расположенных друг за другом вертикально,
+ каждый из них раскрашен в разные цвета -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="index.js"></script>
+    <style>
+        .container {
+            display: Flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            background-color: black;
+        };
+        .circle {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background-color: brown;
+        };
+    </style>
+</head>
+<body>
+    <div class="container"><div id="text"></div></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+</body>
+</html>
