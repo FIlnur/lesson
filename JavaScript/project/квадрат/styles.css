@@ -1,0 +1,12 @@
+body {
+margin: 0;
+overflow: hidden; /* Чтобы не было полос прокрутки */
+background-color: #1a1a1a; /* Темный фон */
+}
+
+#square {
+position: absolute;
+background-color: #ff8c00; /* Оранжевый квадрат */
+left: 0;
+top: 0;
+}
