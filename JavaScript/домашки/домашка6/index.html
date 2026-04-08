@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогноз погоды</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Прогноз погоды</h1>
+        
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Введите название города">
+            <button id="searchBtn">Найти</button>
+        </div>
+
+        <div id="currentWeather" class="weather-block">
+            <h2>Текущая погода</h2>
+            <div id="currentData"></div>
+        </div>
+
+        <div id="forecast" class="weather-block">
+            <h2>Прогноз на 5 дней</h2>
+            <div id="forecastData" class="forecast-grid"></div>
+        </div>
+
+        <div id="errorMsg" class="error-message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

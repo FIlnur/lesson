@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f9ff;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        label {
+            display: block;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        label:hover {
+            background-color: #f0f7ff;
+            border-color: #007bff;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #results {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e7f3ff;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Пройдите тест</h1>
+
+        <form id="quizForm">
+            <!-- Вопрос 1 -->
+            <div class="question">
+                <h3>1. Какой город является столицей Франции?</h3>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q1" value="0"> Лондон
+                    </label>
+            <label>
+                <input type="radio" name="q1" value="1"> Париж
+            </label>
+        </div>
+    </div>
+
+    <!-- Вопрос 2 -->
+    <div class="question">
+        <h3>2. Сколько планет в Солнечной системе?</h3>
+        <div class="options">
+            <label>
+                <input type="radio" name="q2" value="0"> 7
+            </label>
+            <label>
+                <input type="radio" name="q2" value="1"> 8
+            </label>
+        </div>
+    </div>
+
+    <!-- Вопрос 3 -->
+    <div class="question">
+        <h3>3. Какой газ необходим для дыхания?</h3>
+        <div class="options">
+            <label>
+                <input type="radio" name="q3" value="0"> Углекислый газ
+            </label>
+            <label>
+                <input type="radio" name="q3" value="1"> Кислород
+            </label>
+        </div>
+    </div>
+
+    <!-- Кнопка отправки -->
+    <button type="button" onclick="checkResults()">Проверить результаты</button>
+</form>
+
+<!-- Блок для вывода результатов -->
+<div id="results"></div>
+</div>
+
+<script>
+    // Правильные ответы (1 — правильный, 0 — неправильный)
+    const correctAnswers = [1, 1, 1];
+
+    function checkResults() {
+        // Получаем все элементы формы
+        const form = document.getElementById('quizForm');
+        const questions = form.querySelectorAll('.question');
+        let score = 0;
+
+        // Проходим по всем вопросам
+        questions.forEach((question, index) => {
+            // Находим выбранный ответ для текущего вопроса
+            const selectedAnswer = question.querySelector('input[type="radio"]:checked');
+
+            // Если ответ выбран и он правильный
+            if (selectedAnswer && parseInt(selectedAnswer.value) === correctAnswers[index]) {
+                score++;
+            }
+        });
+
+        // Выводим результаты
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.style.display = 'block';
+        resultsDiv.innerHTML = `
+            <h3>Результаты теста</h3>
+            <p>Вы ответили правильно на <strong>${score}</strong> из ${questions.length} вопросов.</p>
+        `;
+    }
+</script>
+</body>
+</html>

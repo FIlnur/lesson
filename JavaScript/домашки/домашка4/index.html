@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бронирование билетов на поезд</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .seats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .seat {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .seat.selected {
+            background-color: #28a745;
+            color: white;
+        }
+        .seat.booked {
+            background-color: #dc3545;
+            color: white;
+            cursor: not-allowed;
+        }
+        .booking-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .booking-item {
+            padding: 10px;
+            margin: 5px 0;
+            background: #e9ecef;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Бронирование билетов на поезд</h1>
+
+        <div class="section">
+            <h2>Шаг 1: Выберите направление и дату</h2>
+            <label for="route">Направление:</label>
+            <select id="route">
+                <option value="">Выберите направление</option>
+            </select>
+
+            <label for="date">Дата поездки:</label>
+            <input type="date" id="date">
+
+            <button onclick="showSeats()">Показать места</button>
+        </div>
+
+        <div class="section" id="seatsSection" style="display: none;">
+            <h2>Шаг 2: Выберите места для бронирования</h2>
+            <div class="seats-grid" id="seatsContainer">
+                <!-- Места будут генерироваться динамически -->
+            </div>
+            <button onclick="bookSeats()" style="margin-top: 15px;">Забронировать выбранные места</button>
+        </div>
+
+        <div class="section">
+            <h2>Ваши бронирования</h2>
+            <button onclick="showBookings()">Показать бронирования</button>
+            <ul class="booking-list" id="bookingsList">
+                <!-- Список бронирований будет генерироваться динамически -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Массивы с данными
+        const routes = [
+            { id: 1, name: "Москва — Санкт-Петербург" },
+            { id: 2, name: "Москва — Казань" },
+            { id: 3, name: "Санкт-Петербург — Нижний Новгород" }
+        ];
+
+        const seats = Array.from({ length: 24 }, (_, i) => ({
+            id: i + 1,
+            number: i + 1,
+            isBooked: false
+        }));
+
+        let bookings = [];
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            // Заполняем список направлений
+            const routeSelect = document.getElementById('route');
+            routes.forEach(route => {
+                const option = document.createElement('option');
+                option.value = route.id;
+                option.textContent = route.name;
+                routeSelect.appendChild(option);
+            });
+
+            // Устанавливаем минимальную дату (сегодня)
+            const dateInput = document.getElementById('date');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.min = today;
+        });
+
+        // Показать места для выбора
+        function showSeats() {
+            const routeId = document.getElementById('route').value;
+            const date = document.getElementById('date').value;
+
+            if (!routeId || !date) {
+                alert('Пожалуйста, выберите направление и дату!');
+                return;
+            }
+
+            // Очищаем предыдущие бронирования для этой даты/направления
+            updateSeatStatus(date, parseInt(routeId));
+
+            const seatsContainer = document.getElementById('seatsContainer');
+            seatsContainer.innerHTML = '';
+
+            seats.forEach(seat => {
+                const seatElement = document.createElement('div');
+                seatElement.className = 'seat';
+                seatElement.textContent = `Место ${seat.number}`;
+
+                if (seat.isBooked) {
+                    seatElement.classList.add('booked');
+                } else {
+                    seatElement.addEventListener('click', () => toggleSeatSelection(seatElement, seat));
+                }
+
+                seatsContainer.appendChild(seatElement);
+            });
+
+            document.getElementById('seatsSection').style.display = 'block';
+        }
+
+        // Переключение выбора места
+        function toggleSeatSelection(element, seat) {
+            if (element.classList.contains('selected')) {
+                element.classList.remove('selected');
+                selectedSeats = selectedSeats.filter(s => s.id !== seat.id);
+            } else {
+                element.classList.add('selected');
+                selectedSeats.push(seat);
+            }
+        }
+
+        // Массив для хранения выбранных мест
+        let selectedSeats = [];
+
+        // Забронировать выбранные места
+        function bookSeats() {
+            const routeId = document.getElementById('route').value;
+            const date = document.getElementById('date').value;
+
+            if (selectedSeats.length === 0) {
+                alert('Пожалуйста, выберите хотя бы одно место!');
+                return;
+            }
+
+            // Создаём запись бронирования
+            const booking = {
+                id: Date.now(),
+                route: routes.find(r => r.id === parseInt(routeId)).name,
+                date: date,
+                seats: selectedSeats.map(s => s.number),
+                bookingDate: new Date().toLocaleString()
+            };
+
+            bookings.push(booking);
+
+            // Помечаем места как забронированные
+            selectedSeats.forEach(seat => {
+                seat.isBooked = true;
+            });
+
+            alert(`Успешно забронировано ${selectedSeats.length} мест!`);
+
+            // Сбрасываем выбор
+            selectedSeats = [];
+            showSeats();
+        }
+
+        // Обновить статус мест для конкретной даты/направления
+        function updateSeatStatus(date, routeId) {

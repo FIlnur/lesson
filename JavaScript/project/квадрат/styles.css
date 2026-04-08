@@ -1,12 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-margin: 0;
-overflow: hidden; /* Чтобы не было полос прокрутки */
-background-color: #1a1a1a; /* Темный фон */
+    overflow: hidden;
+    background-color: #1a1a1a;
 }
 
 #square {
-position: absolute;
-background-color: #ff8c00; /* Оранжевый квадрат */
-left: 0;
-top: 0;
+    position: absolute;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+#game-over {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+}
+
+#game-over.show {
+    opacity: 1;
 }
