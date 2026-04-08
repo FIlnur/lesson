@@ -62,8 +62,8 @@ class Company {
        // return this.employees.includes(employee)
     }
 }
-const company = new Company()
-const employee = new Employee("Иван", "программист")
+const company = new Garage()
+const employee = new Car("Иван", "программист")
 company.hire(employee);
 console.log(company.check(employee))
 company.fire(employee);
