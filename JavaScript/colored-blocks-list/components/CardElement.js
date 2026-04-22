@@ -9,6 +9,10 @@ export class CardElement {
         );
     }
 
+    clone() {
+
+    }
+    
     show() {
 
     }
