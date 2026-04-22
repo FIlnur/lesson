@@ -1,0 +1,23 @@
+
+import { ColorSwitch } from "./colorSwitch";
+export class CardElement {
+    constructor(element, colorWhenHidden, colorWhenShowed) {
+        this._element = element;
+        this._switch = new ColorSwitch(this._element,
+            [colorWhenHidden, colorWhenShowed],
+            0,
+        );
+    }
+
+    show() {
+
+    }
+
+    hide() {
+
+    }
+
+    getElement() {
+        return this._element;
+    }
+}
