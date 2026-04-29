@@ -3,8 +3,9 @@
 import { GameContainer } from "../components/GameContainer.js";
 
 const gameElement = document.querySelector(".game");
-const game = new GameContainer(gameElement, 5, 4, 2);
+const game = new GameContainer(gameElement, 5, 4, 4);
 game.initialize();
+game.appendDefaultChildren();
 
 
 // import { ColorSwitch as ColorSwitcher } from "./colorSwitch.js";
