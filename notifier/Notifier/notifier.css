@@ -1,0 +1,11 @@
+.Notifier {
+    display: flex;
+    list-style-type: none;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25%;
+    
+}
