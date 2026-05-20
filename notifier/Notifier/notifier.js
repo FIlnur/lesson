@@ -1,9 +1,14 @@
 // TODO: панелька с уведомлениями 
 import {Notification, NotificationType} from "./notification.js"
 
+
 export class Notifier {
-    constructor(element) {
+    constructor(element, defaultTime) {
         this._element = element;
+        this._defaultTime = defaultTime;
+    }
+    setDefaultTimeout(ms) {
+        this._defaultTime = ms;
     }
 
     showWarning(text) {
@@ -24,7 +29,7 @@ export class Notifier {
 
     _showNotification(notificationType, text) {
         const notificationBox = document.createElement('li');
-        const notification = new Notification(notificationBox, notificationType, text);
+        const notification = new Notification(notificationBox, notificationType, text, this._defaultTime);
         notification.initElement();
         this._element.appendChild(notificationBox)
     }
@@ -36,6 +41,8 @@ function createNotifierAttached() {
     document.body.appendChild(notifierBox);
     return new Notifier(notifierBox);
 }
+
+
 
 export const notifier = createNotifierAttached()
 

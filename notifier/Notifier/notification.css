@@ -3,6 +3,17 @@
     border-radius: 5px;
     text-align: left;
     padding: 10px;
+    position: relative;
+}
+
+.Notification__close {
+    position: absolute;
+    right: 0;
+    background: none;
+    border: none;
+    user-select: none;
+    font-size: 18px;
+    top: 0;
 }
 
 .Notification_info {
