@@ -11,25 +11,25 @@ export class Notifier {
         this._defaultTime = ms;
     }
 
-    showWarning(text) {
-        this._showNotification(NotificationType.WARNING, text)
+    showWarning(text, timeoutMs = null) {
+        this._showNotification(NotificationType.WARNING, text, timeoutMs)
     }
 
-    showError(text) {
-        this._showNotification(NotificationType.ERROR, text)
+    showError(text, timeoutMs = null) {
+        this._showNotification(NotificationType.ERROR, text, timeoutMs)
     }
 
-    showSuccess(text) {
-        this._showNotification(NotificationType.SUCCESS, text)
+    showSuccess(text, timeoutMs = null) {
+        this._showNotification(NotificationType.SUCCESS, text, timeoutMs)
     }
 
-    showInfo(text) {
-        this._showNotification(NotificationType.INFO, text)
+    showInfo(text, timeoutMs = null) {
+        this._showNotification(NotificationType.INFO, text, timeoutMs)
     }
 
-    _showNotification(notificationType, text) {
+    _showNotification(notificationType, text, timeoutMs = null) {
         const notificationBox = document.createElement('li');
-        const notification = new Notification(notificationBox, notificationType, text, this._defaultTime);
+        const notification = new Notification(notificationBox, notificationType, text, timeoutMs ?? this._defaultTime);
         notification.initElement();
         this._element.appendChild(notificationBox)
     }
