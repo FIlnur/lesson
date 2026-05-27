@@ -11,15 +11,28 @@ export class Carousel {
      * @param {HTMLElement} element
      * @param {Array<HTMLElement>} childrenElements
      */
-    constructor(element, childrenElements) {
+    constructor(element, childrenElements, container) {
         this._element = element;
         this._childrenElements = childrenElements;
+        this._container = container;
+        this._index = 0;
         this._leftButton = document.createElement('button');
+        this._leftButton.textContent = " < ";
+        this._leftButton.classList.add('left')
         this._rightButton = document.createElement('button');
+        this._rightButton.textContent = " > ";
+        this._rightButton.classList.add('right')
+        this._element.appendChild(this._leftButton);
+        this._element.appendChild(this._rightButton);
     }
 
-    initializ () {
-        
-    }
+    addClickHandler() {
+        this._leftButton.addEventListener('click', () => {
+            this._index = this._index === 0 ? this._childrenElements.length - 1 : this._index - 1;
+            carouselInner.style.left = `&{this._index * 100}%`
+        })
+        this._rightButton.addEventListener('click', () => {
+            
+        })
+    };
 }
-
