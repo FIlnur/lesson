@@ -6,33 +6,92 @@
 
 
 
+// export class Carousel {
+//     /**
+//      * @param {HTMLElement} element
+//      * @param {Array<HTMLElement>} childrenElements
+//      */
+//     constructor(element, childrenElements, container) {
+//         this._element = element;
+//         this._childrenElements = childrenElements;
+//         this._container = container;
+//         this._index = 0;
+//         this._leftButton = document.createElement('button');
+//         this._leftButton.textContent = " < ";
+//         this._leftButton.classList.add('left')
+//         this._rightButton = document.createElement('button');
+//         this._rightButton.textContent = " > ";
+//         this._rightButton.classList.add('right')
+//         this._element.appendChild(this._leftButton);
+//         this._element.appendChild(this._rightButton);
+//     }
+
+//     addClickHandler() {
+//         this._leftButton.addEventListener('click', () => {
+//             this._index = this._index === 0 ? this._childrenElements.length - 1 : this._index - 1;
+//             carouselInner.style.left = `${this._index * 100}%`
+//         })
+//         this._rightButton.addEventListener('click', () => {
+//             this._index = this._index === 0 ? this._childrenElements.length - 1 : this._index + 1;
+//             carouselInner.style.left = `${this._index * 100}%`
+//         })
+//     };
+// }
+
+
 export class Carousel {
     /**
-     * @param {HTMLElement} element
-     * @param {Array<HTMLElement>} childrenElements
+     * @param {HTMLElement} element - Основной элемент карусели
+     * @param {Array<HTMLElement>} childrenElements - Элементы, которые будут перемещаться в карусели
+     * @param {HTMLElement} container - Контейнер, внутри которого происходит перемещение
      */
     constructor(element, childrenElements, container) {
         this._element = element;
         this._childrenElements = childrenElements;
         this._container = container;
         this._index = 0;
+
+        // Создаём кнопки
         this._leftButton = document.createElement('button');
         this._leftButton.textContent = " < ";
-        this._leftButton.classList.add('left')
+        this._leftButton.classList.add('left');
+
         this._rightButton = document.createElement('button');
         this._rightButton.textContent = " > ";
-        this._rightButton.classList.add('right')
+        this._rightButton.classList.add('right');
+
+        // Добавляем кнопки в элемент карусели
         this._element.appendChild(this._leftButton);
         this._element.appendChild(this._rightButton);
+
+        // Инициализируем начальное состояние
+        this._updateCarouselPosition();
     }
 
+    /**
+     * Обновляет позицию контейнера карусели в зависимости от текущего индекса
+     */
+    _updateCarouselPosition() {
+        this._container.style.transition = 'left 0.3s ease-in-out';
+        this._container.style.left = `-${this._index * 100}%`;
+    }
+
+    /**
+     * Добавляет обработчики кликов для кнопок
+     */
     addClickHandler() {
         this._leftButton.addEventListener('click', () => {
-            this._index = this._index === 0 ? this._childrenElements.length - 1 : this._index - 1;
-            carouselInner.style.left = `&{this._index * 100}%`
-        })
+            this._index = this._index === 0
+                ? this._childrenElements.length - 1
+                : this._index - 1;
+            this._updateCarouselPosition();
+        });
+
         this._rightButton.addEventListener('click', () => {
-            
-        })
-    };
+            this._index = this._index === this._childrenElements.length - 1
+                ? 0
+                : this._index + 1;
+            this._updateCarouselPosition();
+        });
+    }
 }
