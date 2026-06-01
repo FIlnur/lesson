@@ -27,8 +27,8 @@
     overflow-x: hidden;
 }
 
-/* .carousel-inner */
- .carousel-container {
+.carousel-inner {
+ /* .carousel-container { */
     position: absolute;
     left: 0;
     top: 0;
@@ -37,10 +37,11 @@
     justify-content: left;
     flex-wrap: nowrap;
     height: 100%;
+    transition: left 0.3s ease-in;
 }
 
-/* .carouselImage */
-.slide {
+.carouselImage {
+/* .slide { */
     flex: none;
     width: var(--width);
 }
