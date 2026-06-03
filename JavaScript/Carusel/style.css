@@ -28,7 +28,6 @@
 }
 
 .carousel-inner {
- /* .carousel-container { */
     position: absolute;
     left: 0;
     top: 0;
@@ -37,22 +36,23 @@
     justify-content: left;
     flex-wrap: nowrap;
     height: 100%;
-    transition: left 0.3s ease-in;
 }
 
 .carouselImage {
-/* .slide { */
     flex: none;
     width: var(--width);
 }
 
-.carouselImage:nth-child(1) {
-    background-color: red;
+
+.carouselImage.color-red {
+    background-color: rgb(255, 0, 0);
 }
-.carouselImage:nth-child(2) {
+
+.carouselImage.color-blue {
     background-color: blue;
 }
-.carouselImage:nth-child(3) {
+
+.carouselImage.color-yellow {
     background-color: yellow;
 }
 
@@ -63,13 +63,3 @@
     height: 100%;
     transition: left 0.3s ease-in-out;
 }
-.slide:nth-child(1) {
-    background-color: red;
-}
-.slide:nth-child(2) {
-    background-color: blue;
-}
-.slide:nth-child(3) {
-    background-color: yellow;
-}
-
