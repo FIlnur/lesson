@@ -1,0 +1,16 @@
+.Counter {
+    display: block;
+    padding: 0.5em 1em;
+    background-color: #4400ff;
+    color: #fff;
+    border: none;
+}
+
+.Counter:hover {
+    background-color: rgb(35, 139, 0);
+    cursor: pointer;
+}
+
+.Counter_flashed {
+    background-color: brown;
+}
