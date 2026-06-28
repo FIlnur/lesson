@@ -1,4 +1,5 @@
 import { Link, NavLink, Outlet } from "react-router";
+import "./RootLayout.css"
 
 function RootLayout() {
     return (
@@ -8,7 +9,17 @@ function RootLayout() {
                     ThreadLine
                 </Link>
                 <nav className="nav-links" aria-label="Primary navigation">
-                    <NavLink to="/">Catalog</NavLink>
+                    <NavLink 
+                        className={(o)  => `${o.isPending ? "pending": ""} ${o.isActive ? "active": ""} nav-link`} 
+                        to="/">
+                        Catalog
+                    </NavLink>
+                    <NavLink 
+                        className={(o)  => `${o.isPending ? "pending": ""} ${o.isActive ? "active": ""} nav-link`} 
+                        to="/about">
+                        О компании
+                    </NavLink>
+                    
                 </nav>
             </header>
             <main>
