@@ -12,12 +12,27 @@ function RootLayout() {
                     <NavLink 
                         className={(o)  => `${o.isPending ? "pending": ""} ${o.isActive ? "active": ""} nav-link`} 
                         to="/">
-                        Catalog
+                        Каталог
                     </NavLink>
                     <NavLink 
                         className={(o)  => `${o.isPending ? "pending": ""} ${o.isActive ? "active": ""} nav-link`} 
                         to="/about">
                         О компании
+                    </NavLink>
+                    <NavLink 
+                        className={(o)  => `${o.isPending ? "pending": ""} ${o.isActive ? "active": ""} nav-link`} 
+                        to="/about">
+                        Корзина
+                    </NavLink>
+                    <NavLink 
+                        className={(o)  => `${o.isPending ? "pending": ""} ${o.isActive ? "active": ""} nav-link`} 
+                        to="/about">
+                        Доставка и оплата
+                    </NavLink>
+                    <NavLink 
+                        className={(o)  => `${o.isPending ? "pending": ""} ${o.isActive ? "active": ""} nav-link`} 
+                        to="/about">
+                        Контакты
                     </NavLink>
                     
                 </nav>
