@@ -2,8 +2,8 @@ import { createBrowserRouter } from "react-router";
 import RootLayout from "../pages/RootLayout";
 import CatalogPage from "../pages/CatalogPage";
 import ContactsPage from "../pages/ContactsPage";
-import DeliveryPage from "../pages/DeliveryPage";
-import BasketPage from "../pages/BasketPage";
+
+import Cart from "../pages/BasketPage";
 import ProductPage from "../pages/ProductPage";
 import AboutPage from "../pages/AboutPage";
 import productsApi from "./api/productsApi";
@@ -31,9 +31,9 @@ const router = createBrowserRouter ([
                 element: <ProductPage />
             },
             {
-                path: '/basket',
+                path: '/cart',
                 loader: cartApi.get,
-                element: <BasketPage />,
+                element: <Cart />,
             },
             {
                 path: '/contacts',

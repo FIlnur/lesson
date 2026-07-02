@@ -1,5 +1,5 @@
 const config = {
-    apiUrl: 'http://teacher-4'
+    apiUrl: 'http://localhost'
 }
 
 export default config

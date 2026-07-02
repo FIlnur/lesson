@@ -21,7 +21,7 @@ function RootLayout() {
                     </NavLink>
                     <NavLink 
                         className={(o)  => `${o.isPending ? "pending": ""} ${o.isActive ? "active": ""} nav-link`} 
-                        to="/about">
+                        to="/cart">
                         Корзина
                     </NavLink>
                     <NavLink 
